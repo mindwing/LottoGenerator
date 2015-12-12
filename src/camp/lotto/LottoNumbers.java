@@ -36,20 +36,32 @@ public class LottoNumbers {
         String grade = null;
         int matchCount = getMatchCount(_anotherLotto);
 
-        if (matchCount < 3) {
-            grade = "꽝";
-        } else if (matchCount == 3) {
-            grade = "5등";
-        } else if (matchCount == 4) {
-            grade = "4등";
-        } else if (matchCount == 5) {
-            if (_anotherLotto.containsExtra(extraNumber)) {
-                grade = "2등";
-            } else {
-                grade = "3등";
-            }
-        } else if (matchCount == 6) {
-            grade = "1등";
+        switch (matchCount) {
+            case 0:
+            case 1:
+            case 2:
+                grade = "꽝";
+                break;
+
+            case 3:
+                grade = "5등";
+                break;
+
+            case 4:
+                grade = "4등";
+                break;
+
+            case 5:
+                if (_anotherLotto.containsExtra(extraNumber)) {
+                    grade = "2등";
+                } else {
+                    grade = "3등";
+                }
+                break;
+
+            case 6:
+                grade = "1등";
+                break;
         }
 
         return grade;
@@ -60,7 +72,7 @@ public class LottoNumbers {
 
         for (int number : numbers) {
             if (_anotherLotto.containsNumber(number)) {
-                matchCount = matchCount + 1;
+                matchCount += 1;
             }
         }
 
@@ -76,6 +88,6 @@ public class LottoNumbers {
     }
 
     public String toString() {
-        return numbers.toString() + " *" + extraNumber;
+        return String.format("%s *%s", numbers.toString(), extraNumber);
     }
 }
