@@ -32,24 +32,22 @@ public class LottoNumbers {
         extraNumber = newExtra;
     }
 
-    public String getMatchGrade(LottoNumbers _anotherLotto) {
-        String grade = null;
+    public int getMatchGrade(LottoNumbers _anotherLotto) {
+        int grade = 0;
         int matchCount = getMatchCount(_anotherLotto);
 
-        if (matchCount < 3) {
-            grade = "꽝";
-        } else if (matchCount == 3) {
-            grade = "5등";
+        if (matchCount == 3) {
+            grade = 5;
         } else if (matchCount == 4) {
-            grade = "4등";
+            grade = 4;
         } else if (matchCount == 5) {
             if (_anotherLotto.containsExtra(extraNumber)) {
-                grade = "2등";
+                grade = 2;
             } else {
-                grade = "3등";
+                grade = 3;
             }
         } else if (matchCount == 6) {
-            grade = "1등";
+            grade = 1;
         }
 
         return grade;
