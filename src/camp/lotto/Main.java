@@ -6,10 +6,17 @@ package camp.lotto;
 public class Main {
     public static void main(String[] args) {
         LottoNumbers thisWeekLotto = new LottoNumbers();
-        LottoNumbers myLotto = new LottoNumbers();
 
-        System.out.println(thisWeekLotto);
-        System.out.println(myLotto);
-        System.out.println(myLotto.getMatchGrade(thisWeekLotto));
+        for (int i = 0; i < 1000; i = i + 1) {
+            LottoNumbers myLotto = new LottoNumbers();
+
+//        System.out.println(thisWeekLotto);
+//        System.out.println(myLotto);
+
+            String grade = myLotto.getMatchGrade(thisWeekLotto);
+            if (!"꽝".equals(grade)) {
+                System.out.println(i + "번째: " + myLotto.getMatchGrade(thisWeekLotto));
+            }
+        }
     }
 }
